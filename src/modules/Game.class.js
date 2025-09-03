@@ -40,11 +40,8 @@ class Game {
 
   bindControls() {
     document.addEventListener('keydown', (e) => {
-      if (this.firstMove) {
-        buttonStart.classList.remove('start');
-        buttonStart.classList.add('restart');
-        buttonStart.textContent = 'Restart';
-        this.firstMove = false;
+      if (this.status !== 'playing') {
+        return;
       }
       e.preventDefault();
 
@@ -61,8 +58,8 @@ class Game {
         case 'ArrowDown':
           this.moveDown();
           break;
+        default:
       }
-      this.render();
     });
   }
 
@@ -94,14 +91,20 @@ class Game {
     }
 
     if (this.hasBoardChanged(oldBoard, this.board)) {
+      if (this.firstMove) {
+        buttonStart.classList.remove('start');
+        buttonStart.classList.add('restart');
+        buttonStart.textContent = 'Restart';
+        this.firstMove = false;
+      }
+
       this.addNewCell();
 
       if (!this.checkWin()) {
         this.checkLose();
       }
+      this.render();
     }
-
-    this.render();
   }
 
   moveRight() {
@@ -126,14 +129,20 @@ class Game {
     }
 
     if (this.hasBoardChanged(oldBoard, this.board)) {
+      if (this.firstMove) {
+        buttonStart.classList.remove('start');
+        buttonStart.classList.add('restart');
+        buttonStart.textContent = 'Restart';
+        this.firstMove = false;
+      }
+
       this.addNewCell();
 
       if (!this.checkWin()) {
         this.checkLose();
       }
+      this.render();
     }
-
-    this.render();
   }
 
   moveUp() {
@@ -169,14 +178,20 @@ class Game {
     }
 
     if (this.hasBoardChanged(oldBoard, this.board)) {
+      if (this.firstMove) {
+        buttonStart.classList.remove('start');
+        buttonStart.classList.add('restart');
+        buttonStart.textContent = 'Restart';
+        this.firstMove = false;
+      }
+
       this.addNewCell();
 
       if (!this.checkWin()) {
         this.checkLose();
       }
+      this.render();
     }
-
-    this.render();
   }
 
   moveDown() {
@@ -212,14 +227,20 @@ class Game {
     }
 
     if (this.hasBoardChanged(oldBoard, this.board)) {
+      if (this.firstMove) {
+        buttonStart.classList.remove('start');
+        buttonStart.classList.add('restart');
+        buttonStart.textContent = 'Restart';
+        this.firstMove = false;
+      }
+
       this.addNewCell();
 
       if (!this.checkWin()) {
         this.checkLose();
       }
+      this.render();
     }
-
-    this.render();
   }
 
   /**
