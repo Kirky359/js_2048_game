@@ -378,6 +378,11 @@ class Game {
     this.addNewCell();
     this.addNewCell();
 
+    buttonStart.classList.remove('start');
+    buttonStart.classList.add('restart');
+    buttonStart.textContent = 'Restart';
+    this.firstMove = false;
+
     this.render();
   }
 
@@ -395,6 +400,10 @@ class Game {
     this.score = 0;
     this.status = 'idle';
     this.firstMove = true;
+
+    buttonStart.classList.remove('restart');
+    buttonStart.classList.add('start');
+    buttonStart.textContent = 'Start';
 
     this.render();
   }
